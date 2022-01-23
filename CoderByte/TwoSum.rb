@@ -4,17 +4,17 @@
 
 
 def TwoSum(arr)
-    res = []
-    arr.each do |c|
-       next if c == arr.first
-       
-       arr.each do |x|
-        if arr.first == x+c
-            res << c << x
-        end
-       end
+    check = {}
+    new = []
+    first = arr.first
+    arr.each_with_index do |c,i|
+        next if i == 0
+        diff = first - c
+         new << c << check[diff] if check[diff]
+        
+        check[c] = c
     end
-    res.empty? ? -1 : res.uniq.join(",")
+    new.empty? ? -1 : new.uniq.join(",")
     
 end
     
